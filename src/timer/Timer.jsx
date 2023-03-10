@@ -4,7 +4,7 @@ function Timer() {
   const [timer, setTimer] = useState(110);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [timerId, setTimerId] = useState(Infinity);
-  
+
   const [sessionLen, setSessionLen] = useState(0);
   const [breakLen, setBreakLen] = useState(0);
 
@@ -13,29 +13,50 @@ function Timer() {
   const handleTimer = () => {
     if (!isTimerRunning) {
       setIsTimerRunning(true);
-      if (timerType === "session") {
-        setTimer(sessionLen)
-        setTimerId(
-          setInterval(() => {
-            if(timer > 0 ){
+      setTimerId(
+        setInterval(() => {
+          console.log("setInterval called");
+
+          if (timerType === "break") {
+            setTimer(breakLen);
+            if (timer > 0) {
               setTimer((prevState) => prevState - 1);
-            } else{
-              setTimerType("break");
-            }
-          }, 500)
-        );
-      } else{
-        setTimer(breakLen)
-        setTimerId(
-          setInterval(() => {
-            if(timer > 0 ){
-              setTimer((prevState) => prevState - 1);
-            } else{
+            } else {
               setTimerType("session");
             }
-          }, 500)
-        )
-      }
+          } else {
+            setTimer(sessionLen);
+            if (timer > 0) {
+              setTimer((prevState) => prevState - 1);
+            } else {
+              setTimerType("break");
+            }
+          }
+        }, 200)
+      );
+      // if (timerType === "session") {
+      //   setTimer(sessionLen)
+      //   setTimerId(
+      //     setInterval(() => {
+      //       if(timer > 0 ){
+      //         setTimer((prevState) => prevState - 1);
+      //       } else{
+      //         setTimerType("break");
+      //       }
+      //     }, 500)
+      //   );
+      // } else{
+      //   setTimer(breakLen)
+      //   setTimerId(
+      //     setInterval(() => {
+      //       if(timer > 0 ){
+      //         setTimer((prevState) => prevState - 1);
+      //       } else{
+      //         setTimerType("session");
+      //       }
+      //     }, 500)
+      //   )
+      // }
     } else {
       setIsTimerRunning(false);
       clearInterval(timerId);
