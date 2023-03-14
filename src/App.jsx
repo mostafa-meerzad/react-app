@@ -11,6 +11,7 @@ import {
 } from "./styledComponents/Button.styled";
 import { Container } from "./styledComponents/Container.styled";
 import { GlobalStyles } from "./styledComponents/GlobalStyles.styled";
+import Navbar from './styledComponents/NavbarWithStyledComponents/Navbar';
 
 function App() {
   return (
@@ -30,8 +31,12 @@ function App() {
       {/* style ReactJS components by styled-components  */}
 
       {/* add general styles that affect the whole App */}
-      <GlobalStyles />
-      <StyledButtonJSX />
+      {/* <GlobalStyles />
+      <StyledButtonJSX /> */}
+
+{/* Navbar made by styled-components as a practice */}
+
+<Navbar/>
     </div>
   );
 }
