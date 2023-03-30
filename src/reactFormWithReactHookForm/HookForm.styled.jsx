@@ -2,7 +2,7 @@ import styled from "styled-components";
 import HookForm from "./HookForm";
 
 export default styled(HookForm)`
-  width: 80%;
+  width: 25rem;
   height: fit-content;
   padding: 2rem;
   border: 1px solid white;
@@ -26,6 +26,7 @@ export default styled(HookForm)`
   }
   & input[type=submit]{
     width: fit-content;
+    padding: .5rem;
     margin: 0;
     /* border-radius: .4rem; */
 
